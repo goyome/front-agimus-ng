@@ -6,6 +6,8 @@
     // Load the CAS lib
     require_once $phpcas_path . '/CAS.php';
 
+    $root_uri = "/".strtok(dirname($_SERVER["REQUEST_URI"]), '/admin/index.php');
+
     phpCAS::setDebug();
 
     // Initialize phpCAS
@@ -55,25 +57,25 @@
     if($user->isAdmin()) {
       // route la requête en interne
       $uri=strtok($_SERVER["REQUEST_URI"],'?');
-      if('/admin/index.php'==$uri){
+      if(''.$root_uri.'/admin/index.php'==$uri){
         
         require $index_path.'/templates/admin/index.php';
 
-      } elseif('/admin/index.php/users'==$uri ) {
+      } elseif(''.$root_uri.'/admin/index.php/users'==$uri ) {
         require_once $index_path.'/admin/views/userViews.php';
         if(isset($_GET['action']) && $_GET['action']=="new") create_user_action();
         elseif(isset($_GET['action']) && $_GET['action']=="modify" && isset($_GET['id'])) update_user_action($_GET['id']);
         elseif(isset($_GET['action']) && $_GET['action']=="delete" && isset($_GET['id'])) delete_user_action($_GET['id']);
         else list_all_user_action();
 
-      } elseif('/admin/index.php/graphes'==$uri ) {
+      } elseif(''.$root_uri.'/admin/index.php/graphes'==$uri ) {
         require_once $index_path.'/admin/views/grapheViews.php';
         if(isset($_GET['action']) && $_GET['action']=="new") create_graphe_action();
         elseif(isset($_GET['action']) && $_GET['action']=="modify" && isset($_GET['id'])) update_graphe_action($_GET['id']);
         elseif(isset($_GET['action']) && $_GET['action']=="delete" && isset($_GET['id'])) delete_graphe_action($_GET['id']);
         else list_all_graphe_action();
 
-      } elseif('/admin/index.php/dashboards'==$uri ) {
+      } elseif(''.$root_uri.'/admin/index.php/dashboards'==$uri ) {
         require_once $index_path.'/admin/views/dashboardViews.php';
         if(isset($_GET['action']) && $_GET['action']=="new") create_dashboard_action();
         elseif(isset($_GET['action']) && $_GET['action']=="modify" && isset($_GET['id'])) update_dashboard_action($_GET['id']);

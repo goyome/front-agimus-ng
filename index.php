@@ -6,6 +6,8 @@
     // Load the CAS lib
     require_once $phpcas_path . '/CAS.php';
 
+    $root_uri = "/".strtok(dirname($_SERVER["REQUEST_URI"]), '/index.php');
+    
     phpCAS::setDebug();
 
     // Initialize phpCAS
@@ -62,11 +64,11 @@
     //$uri = $_SERVER ['REQUEST_URI'];
     $uri=strtok($_SERVER["REQUEST_URI"],'?');
 
-    if('/index.php'==$uri){
+    if($root_uri.'/index.php'==$uri){
         redirect_to_default_dashboard_action($user);
-    } elseif(preg_match(',/index.php/dashboard/(?P<id>\d+)/,', $uri, $matches)) {
+    } elseif(preg_match(','.$root_uri.'/index.php/dashboard/(?P<id>\d+)/,', $uri, $matches)) {
         show_dashboard_action($matches['id']);
-    } elseif(preg_match(',/index.php/graphe/(?P<id>\d+)/,', $uri, $matches)) {
+    } elseif(preg_match(','.$root_uri.'/index.php/graphe/(?P<id>\d+)/,', $uri, $matches)) {
         show_graphe_action($matches['id']);
     } else {
       header('Status: 404 Not Found');
