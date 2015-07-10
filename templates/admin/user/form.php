@@ -3,21 +3,21 @@
   else $title="Ajouter un nouvel utilisateur" ;
 
   if(isset($msg) && $msg['level']=="success") {
-    header( "refresh:3;url=/admin/index.php/users" );
+    header( "refresh:3;url=$root_uri/admin/index.php/users" );
   }
 ?>
 <?php ob_start () ?>
-<li ><a href="/admin/index.php">Accueil <span class="sr-only">Accueil</span></a></li>
-<li class="active"><a href="/admin/index.php/users">Utilisateurs</a></li>
-<li><a href="/admin/index.php/dashboards">Tableaux de bord</a></li>
-<li><a href="/admin/index.php/graphes">Graphiques</a></li>
+<li ><a href="<?php echo $root_uri; ?>/admin/index.php">Accueil <span class="sr-only">Accueil</span></a></li>
+<li class="active"><a href="<?php echo $root_uri; ?>/admin/index.php/users">Utilisateurs</a></li>
+<li><a href="<?php echo $root_uri; ?>/admin/index.php/dashboards">Tableaux de bord</a></li>
+<li><a href="<?php echo $root_uri; ?>/admin/index.php/graphes">Graphiques</a></li>
 <?php $menu=ob_get_clean()?>
 
 <?php ob_start () ?>
   
   <?php if(isset($msg) && $msg['level']=="success") { ?>
   <p> Vous allez être redirigé dans 3 secondes.</p>
-  <p> Sinon cliquez : <a href="/admin/index.php/users" class="btn btn-default">Retour</a> </p>
+  <p> Sinon cliquez : <a href="<?php echo $root_uri; ?>/admin/index.php/users" class="btn btn-default">Retour</a> </p>
   <?php } else { ?>
 
           <div class="table-responsive">
@@ -65,7 +65,7 @@
               <?php } ?>
               <button type="submit" class="btn btn-default">Envoyer</button>
               <button type="reset" class="btn btn-default">Effacer</button>
-              <a href="/admin/index.php/users" class="btn btn-default">Retour</a>
+              <a href="<?php echo $root_uri; ?>/admin/index.php/users" class="btn btn-default">Retour</a>
             </form>
           </div>
   <?php } ?>

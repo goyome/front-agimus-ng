@@ -1,14 +1,14 @@
 <?php $title="Liste des graphiques" ?>
 <?php ob_start () ?>
-<li ><a href="/admin/index.php">Accueil <span class="sr-only">Accueil</span></a></li>
-<li ><a href="/admin/index.php/users">Utilisateurs</a></li>
-<li><a href="/admin/index.php/dashboards">Tableaux de bord</a></li>
-<li class="active"><a href="/admin/index.php/graphes">Graphiques</a></li>
+<li ><a href="<?php echo $root_uri; ?>/admin/index.php">Accueil <span class="sr-only">Accueil</span></a></li>
+<li ><a href="<?php echo $root_uri; ?>/admin/index.php/users">Utilisateurs</a></li>
+<li><a href="<?php echo $root_uri; ?>/admin/index.php/dashboards">Tableaux de bord</a></li>
+<li class="active"><a href="<?php echo $root_uri; ?>/admin/index.php/graphes">Graphiques</a></li>
 <?php $menu=ob_get_clean()?>
 
 <?php ob_start () ?>
           <div class="table-responsive">
-            <a href="/admin/index.php/graphes?action=new" class="btn btn-default">Ajouter un nouveau graphique</a>
+            <a href="<?php echo $root_uri; ?>/admin/index.php/graphes?action=new" class="btn btn-default">Ajouter un nouveau graphique</a>
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -28,14 +28,14 @@
                   <td><?php echo $graphe->getUrl(); ?></td>
                   <td><?php echo $graphe->getDescription() ?></td>
                   <td>
-                    <form method="get" action="/admin/index.php/graphes">
+                    <form method="get" action="<?php echo $root_uri; ?>/admin/index.php/graphes">
                       <input type="hidden" name="action" value="modify">
                       <input type="hidden" name="id" value="<?php echo $graphe->getId(); ?>">
                       <input type="submit" value="modifier" class="btn btn-default">
                     </form>
                   </td>
                   <td>
-                    <form method="get" action="/admin/index.php/graphes">
+                    <form method="get" action="<?php echo $root_uri; ?>/admin/index.php/graphes">
                       <input type="hidden" name="action" value="delete">
                       <input type="hidden" name="id" value="<?php echo $graphe->getId(); ?>">
                       <input type="submit" value="supprimer" class="btn btn-default">

@@ -1,13 +1,13 @@
 <?php
 
     function list_all_dashboard_action() {
-        global $index_path;
+        global $index_path, $root_uri;
         $dashboards = get_all_dashboard();
         require $index_path.'/templates/admin/dashboard/dashboards.php';
     }
     
     function create_dashboard_action() {
-        global $index_path, $user_roles;
+        global $index_path, $user_roles, $root_uri;
         $all_graphes = get_all_graphe();
 
         if(isset($_POST['action']) && $_POST['action']=="new") {
@@ -28,7 +28,7 @@
     }
 
     function update_dashboard_action($id) {
-        global $index_path, $user_roles;
+        global $index_path, $user_roles, $root_uri;
         $all_graphes = get_all_graphe();
         $form_dashboard = get_dashboard_by_id($id);
 
@@ -63,7 +63,7 @@
 
     
     function delete_dashboard_action($id) {
-        global $index_path;
+        global $index_path, $root_uri;
 
         $form_dashboard = get_dashboard_by_id($id);
         if(is_object($form_dashboard)) {

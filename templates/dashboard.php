@@ -10,9 +10,9 @@
     <title>AgimusNG - tableau de bord</title>
 
     <!-- Bootstrap -->
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/assets/bootstrap-daterangepicker-master/daterangepicker-bs3.css" />
+    <link href="<?php echo $root_uri; ?>/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $root_uri; ?>/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo $root_uri; ?>/assets/bootstrap-daterangepicker-master/daterangepicker-bs3.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,18 +29,18 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="/">
-                        <img alt="Logo" src="/assets/images/logo.png">
+                        <img alt="Logo" src="<?php echo $root_uri; ?>/assets/images/logo.png">
                     </a>
                 </li>
                 <?php if($user->isAdmin()) { ?>
                 <li>
-                    <a href="/admin/index.php">Administration</a>
+                    <a href="<?php echo $root_uri; ?>/admin/index.php">Administration</a>
                 </li>
                 <?php } ?>
                 <li>Vos tableaux de bords:</li>
                 <?php foreach($dashboards as $dash): ?>
                 <li <?php if($dash->getId()==$dashboard->getId()) echo 'class="active"'; ?>>
-                    <a href="/index.php/dashboard/<?php echo $dash->getId(); ?>/?startDate=<?php echo $startDate; ?>&endDate=<?php echo $endDate; ?>"><?php echo $dash->getTitle(); ?></a>
+                    <a href="<?php echo $root_uri; ?>/index.php/dashboard/<?php echo $dash->getId(); ?>/?startDate=<?php echo $startDate; ?>&endDate=<?php echo $endDate; ?>"><?php echo $dash->getTitle(); ?></a>
                 </li>
                 <?php endforeach ?>
             </ul>
@@ -54,7 +54,7 @@
               <div class="row">
                   <div class="col-lg-12">
                       <div class="pull-right">
-                        <a href="/index.php?logout=" class="btn btn-default" >Déconnexion</a>
+                        <a href="<?php echo $root_uri; ?>/index.php?logout=" class="btn btn-default" >Déconnexion</a>
                       </div>
                       <div id="reportrange" class="btn btn-default pull-right" >
                           <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
@@ -81,7 +81,7 @@
                   <div class="col-md-4 portfolio-item">
                       <iframe class="img-responsive" src="<?php echo $graphe->getCheckedUrl($startDate, $endDate); ?>"  style="display:block;width:100%;max-width:100%;height:288px;max-height:100%;"/> </iframe>
                       <h3>
-                          <a href="/index.php/graphe/<?php echo $graphe->getId(); ?>/?startDate=<?php echo $startDate; ?>&endDate=<?php echo $endDate; ?>"><?php echo $graphe->getTitle(); ?></a>
+                          <a href="<?php echo $root_uri; ?>/index.php/graphe/<?php echo $graphe->getId(); ?>/?startDate=<?php echo $startDate; ?>&endDate=<?php echo $endDate; ?>"><?php echo $graphe->getTitle(); ?></a>
                       </h3>
                       <p><?php echo $graphe->getDescription(); ?></p>
                   </div>
@@ -112,10 +112,10 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo $root_uri; ?>/assets/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="/assets/bootstrap-daterangepicker-master/moment.js"></script>
-    <script type="text/javascript" src="/assets/bootstrap-daterangepicker-master/daterangepicker.js"></script>
+    <script type="text/javascript" src="<?php echo $root_uri; ?>/assets/bootstrap-daterangepicker-master/moment.js"></script>
+    <script type="text/javascript" src="<?php echo $root_uri; ?>/assets/bootstrap-daterangepicker-master/daterangepicker.js"></script>
 
 
     <!-- Menu Toggle Script -->

@@ -1,13 +1,13 @@
 <?php
 
     function list_all_user_action() {
-        global $index_path;
+        global $index_path, $root_uri;
         $users = get_all_user();
         require $index_path.'/templates/admin/user/users.php';
     }
 
     function create_user_action() {
-        global $index_path, $user_roles;
+        global $index_path, $user_roles, $root_uri;
         if(isset($_POST['action']) && $_POST['action']=="new") {
             $send_roles="";
             if(isset($_POST['roles'])) {
@@ -28,7 +28,7 @@
     }
 
     function update_user_action($id) {
-        global $index_path, $user_roles;
+        global $index_path, $user_roles, $root_uri;
         $form_user = get_user_by_id($id);
         if(isset($_POST['action']) && $_POST['action']=="modify" && isset($_POST['id']) && $_POST['id']==$_GET['id']) {
             if(isset($_POST['username'])) {
@@ -50,7 +50,7 @@
     }
 
     function delete_user_action($id) {
-        global $index_path, $user_roles;
+        global $index_path, $user_roles, $root_uri;
 
         $form_user = get_user_by_id($id);
 

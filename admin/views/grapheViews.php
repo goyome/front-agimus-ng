@@ -1,13 +1,13 @@
 <?php
 
     function list_all_graphe_action() {
-        global $index_path;
+        global $index_path, $root_uri;
         $graphes = get_all_graphe();
         require $index_path.'/templates/admin/graphe/graphes.php';
     }
     
     function create_graphe_action() {
-        global $index_path;
+        global $index_path, $root_uri;
 
         if(isset($_POST['action']) && $_POST['action']=="new") {
             $new_graphe = create_new_graphe($_POST['title'], $_POST['url'], $_POST['description']);
@@ -21,7 +21,7 @@
     }
     
     function update_graphe_action($id) {
-        global $index_path;
+        global $index_path, $root_uri;
 
         $form_graphe = get_graphe_by_id($id);
         if(is_object($form_graphe)) {
@@ -41,7 +41,7 @@
     }
     
     function delete_graphe_action($id) {
-        global $index_path;
+        global $index_path, $root_uri;
 
         $form_graphe = get_graphe_by_id($id);
         if(is_object($form_graphe)) {

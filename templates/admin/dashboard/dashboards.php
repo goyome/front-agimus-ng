@@ -1,14 +1,14 @@
 <?php $title="Liste des tableaux de bord" ?>
 <?php ob_start () ?>
-<li ><a href="/admin/index.php">Accueil <span class="sr-only">Accueil</span></a></li>
-<li ><a href="/admin/index.php/users">Utilisateurs</a></li>
-<li class="active"><a href="/admin/index.php/dashboards">Tableaux de bord</a></li>
-<li ><a href="/admin/index.php/graphes">Graphiques</a></li>
+<li ><a href="<?php echo $root_uri; ?>/admin/index.php">Accueil <span class="sr-only">Accueil</span></a></li>
+<li ><a href="<?php echo $root_uri; ?>/admin/index.php/users">Utilisateurs</a></li>
+<li class="active"><a href="<?php echo $root_uri; ?>/admin/index.php/dashboards">Tableaux de bord</a></li>
+<li ><a href="<?php echo $root_uri; ?>/admin/index.php/graphes">Graphiques</a></li>
 <?php $menu=ob_get_clean()?>
 
 <?php ob_start () ?>
           <div class="table-responsive">
-            <a href="/admin/index.php/dashboards?action=new" class="btn btn-default">Ajouter un nouveau tableau de bord</a>
+            <a href="<?php echo $root_uri; ?>/admin/index.php/dashboards?action=new" class="btn btn-default">Ajouter un nouveau tableau de bord</a>
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -30,14 +30,14 @@
                   <td><?php foreach($dashboard->getRoles() as $role){ echo "$role "; } ?></td>
                   <td><?php foreach($dashboard->getGraphes() as $graphe){ echo "- ".$graphe->getTitle()."<br/>"; } ?></td>
                   <td>
-                    <form method="get" action="/admin/index.php/dashboards">
+                    <form method="get" action="<?php echo $root_uri; ?>/admin/index.php/dashboards">
                       <input type="hidden" name="action" value="modify">
                       <input type="hidden" name="id" value="<?php echo $dashboard->getId(); ?>">
                       <input type="submit" value="modifier" class="btn btn-default">
                     </form>
                   </td>
                   <td>
-                    <form method="get" action="/admin/index.php/dashboards">
+                    <form method="get" action="<?php echo $root_uri; ?>/admin/index.php/dashboards">
                       <input type="hidden" name="action" value="delete">
                       <input type="hidden" name="id" value="<?php echo $dashboard->getId(); ?>">
                       <input type="submit" value="supprimer" class="btn btn-default">
